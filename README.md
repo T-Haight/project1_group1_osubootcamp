@@ -4,10 +4,10 @@
 This project will be preforming Data Analysis and Predicting furture sales of LYFT taxi service in New York City, ultimately answering the question which part of NYC has the highest sales and trips. We will be exploring the raw data to determine which data need to be spliced, grouped. The results found will be visualized to give a better understanding.
 
 ## Table of Contents
-1. [Introduction](#introduction)
+1. [Introduction](#Introduction)
 2. [Assumptions](#Assumptions)
-3. [Cleaning Up Data](#Cleaning_up_Data)
-4. [Visualizing the Data](#Visualize_the_Data)
+3. [Cleaning Up Data](#Cleaning-up-Data)
+4. [Visualizing the Data](#Visualize-the-Data)
 5. [Conclusion](#Conclusion)
 
 ## Introduction
@@ -15,8 +15,89 @@ In New York City, all taxi vehicles are managed by TLC(Taxi and Limousine Commis
 
 ## Assumptions
 This Project will making the following assumptions to better understanding of the data to answer the main question.
-1. From the HVFH data only looking at LYFT data as a representative sample.
+1. From the HVFH data only looking at LYFT data for the month of Decemeber 2023 as a representative sample.
 2. We will be looking at total sales without taking into account share of the company vs share of the driver.
 
 ## Cleaning Up Data
-As per the assumptions made above, we will performing the following actions to get the appropriate data we will be working on
+As per the assumptions made above, we will performing the following actions to get the appropriate data we will be working on 
+```python
+nyctaxi_lyft = nyctaxi[nyctaxi['hvfhs_license_num'] == 'HV0005']
+```
+After slicing the data for Lyft, then we have to create a column for airport_visit as a boolean to understand which trips are to and from airport. While we are doing this we are also doing some timeseries data to find out which day of the week these trips were made so that we can an idea of how many taxi fares each day. The code for this as follows
+
+```python
+nyctaxi_lyft.loc[:,'pickup_datetime'] = pd.to_datetime(nyctaxi_lyft['pickup_datetime'])
+nyctaxi_lyft.loc[:,'day_of_week'] = nyctaxi_lyft['pickup_datetime'].dt.day_name()
+```
+After we findout what day these trips are made, now we have to findout at what time of day these trips are requested. For this we do the following 
+
+```python
+###Define a function to return what time of day
+def time_of_day(x):
+    if x in range(6,12):
+        return 'Morning'
+    elif x in range(12,17):
+        return 'Afternoon'
+    elif x in range(17,22):
+        return 'Evening'
+    else:
+        return 'Late night'
+nyctaxi_lyft['pickup_datetime'] = pd.to_datetime(nyctaxi_lyft['pickup_datetime'])
+nyctaxi_lyft['dropoff_datetime'] = pd.to_datetime(nyctaxi_lyft['dropoff_datetime'])
+
+nyctaxi_lyft['pickup_hour'] = nyctaxi_lyft['pickup_datetime'].dt.hour
+nyctaxi_lyft['dropoff_hour'] = nyctaxi_lyft['dropoff_datetime'].dt.hour
+
+nyctaxi_lyft['pickup_timeday'] = nyctaxi_lyft['pickup_hour'].apply(time_of_day)
+nyctaxi_lyft['dropoff_timeday'] = nyctaxi_lyft['dropoff_hour'].apply(time_of_day)
+```
+Here we are answering a question: ***what time of day do we have the highest number of rides?*** This gets into a granularity of time and day to better understand the business of LYFT. This will put the robot taxi company to better position their assets for biggest ROI.
+After this we are combining multiple columns that represent fare into single column called 'total_ride_cost' 
+
+```python
+nyctaxi_lyft.loc[:,'Total_Passenger_Cost'] = (
+    nyctaxi_lyft['base_passenger_fare'] + 
+    nyctaxi_lyft['tolls'] + 
+    nyctaxi_lyft['bcf'] +
+    nyctaxi_lyft['sales_tax'] +
+    nyctaxi_lyft['congestion_surcharge'] +
+    nyctaxi_lyft['airport_fee'] +
+    nyctaxi_lyft['tips'] )
+```
+After performing all these above iteration we arrive at a data set we can use to perform our analysis on.
+
+## Visualizing the Data
+The best way to understand and visualize is to first find common trends in the data where we 
+1. Identify shared patterns or trends among multiple economic time series
+2. Extract underlying common factors that drive the behavior of various economic indicators.
+3. Visualize the relationship between different economic variables and their contributions to common trends.
+
+<p align="center">
+  <img width="1000" height="450" src="https://github.com/user-attachments/assets/17ded101-360a-439a-8f71-6defb193c93e" alt="Description" width="1000">
+</p>
+
+After finding the trends we have determine which areas of NYC are frequent pickup's by travellers to get a better understanding of where we can get more trips which result in more revenue.
+
+<p align="center">
+  <img width="1000" height="450" src="https://github.com/user-attachments/assets/9dd61fe1-305b-4a50-9767-1c091b4a7400" alt="Description" width="1000">
+</p>
+
+Now we know the trends and frequent pickup location, we move onto economics of the rides, where we have to categorise the data to geographical points. Meaning since NYC is divided into Boroughs we have to find where each data points represents each borough of NYC, findout which borough has the hightest number of trips. After that we concentrate on which areas in this borough are more profitable. 
+
+After doing the analysis in the direction mentioned above we arrive at the following graph
+
+<p align="center">
+  <img width="1000" height="450" src="https://github.com/user-attachments/assets/94e3d78d-179f-4b76-90df-85f2ad5a547d" alt="Description" width="1000">
+</p>
+
+Lets put some numbers to the picture above to better understand what we are trying to convey:
+* Queens Borough is the most frequented by travellers of LYFT more than 100,000 trips.
+* In the Queens, both airports ***JFK*** and ***LaGuardia*** are the most profitable pickup with Total sales of ~$7.4 M to ***JFK*** and ~$6.9 M to ***LaGuardia***
+* Similarly, both airports ***JFK*** and ***LaGuardia*** are the most profitable dropoff with Total sales of ~$11 M to ***JFK*** and ~$7.8 M to ***LaGuardia***
+
+ # Visualizing JFK and LaGuardia Airport
+ </p>
+  <img width="500" height="400" src="https://github.com/user-attachments/assets/0c4cedcd-5d7e-4950-b53a-d90c3e587e51" alt="Description" width="500">
+  <img width="500" height="400" src="https://github.com/user-attachments/assets/a75cbcdb-1395-4155-886f-945ebfc83b0e" alt="Description" width="500">
+ </p>
+ Looking both Airport data side by side we can see more travellers are going outisde NYC who are pickup from JFK than compared to LaGuardia.
