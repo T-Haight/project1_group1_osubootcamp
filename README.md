@@ -1,5 +1,9 @@
 # Project 1: NYC Taxi Data Analysis for Starting a RoboTaxi Company
 
+<p align="center"
+    <img width="800" height="450" scr="Resources/robotaxi.jpeg" width="800">
+</p>
+
 ## Overview
 This project will be preforming Data Analysis and Predicting furture sales of LYFT taxi service in New York City, ultimately answering the question which part of NYC has the highest sales and trips. We will be exploring the raw data to determine which data need to be spliced, grouped. The results found will be visualized to give a better understanding.
 
@@ -7,7 +11,7 @@ This project will be preforming Data Analysis and Predicting furture sales of LY
 1. [Introduction](#Introduction)
 2. [Assumptions](#Assumptions)
 3. [Cleaning Up Data](#Cleaning-up-Data)
-4. [Visualizing the Data](#Visualize-the-Data)
+4. [Visualizing the Data](#Visualizing-the-Data)
 5. [Conclusion](#Conclusion)
 
 ## Introduction
@@ -95,9 +99,22 @@ Lets put some numbers to the picture above to better understand what we are tryi
 * In the Queens, both airports ***JFK*** and ***LaGuardia*** are the most profitable pickup with Total sales of ~$7.4 M to ***JFK*** and ~$6.9 M to ***LaGuardia***
 * Similarly, both airports ***JFK*** and ***LaGuardia*** are the most profitable dropoff with Total sales of ~$11 M to ***JFK*** and ~$7.8 M to ***LaGuardia***
 
- # Visualizing JFK and LaGuardia Airport
+ ## Visualizing JFK and LaGuardia Airport
  </p>
-  <img width="500" height="400" src="https://github.com/user-attachments/assets/0c4cedcd-5d7e-4950-b53a-d90c3e587e51" alt="Description" width="500">
-  <img width="500" height="400" src="https://github.com/user-attachments/assets/a75cbcdb-1395-4155-886f-945ebfc83b0e" alt="Description" width="500">
+  <img width="450" height="400" src="https://github.com/user-attachments/assets/0c4cedcd-5d7e-4950-b53a-d90c3e587e51" alt="Description" width="450">
+  <img width="450" height="400" src="https://github.com/user-attachments/assets/a75cbcdb-1395-4155-886f-945ebfc83b0e" alt="Description" width="450">
  </p>
- Looking both Airport data side by side we can see more travellers are going outisde NYC who are pickup from JFK than compared to LaGuardia.
+ Looking both Airport data side by side we can see more travellers are going outisde NYC who are pickup from JFK than compared to LaGuardia. We can clearly see that there has been a clear difference from the drop off zones depicted in these two diagrams above let's go into a couple of metrics regarding a drop off zones of JFK and drop off zones of la Guardia airport the average ride for JFK is close to 3000 per day in compared to LaGuardia is 3400 per day average trip times is 43.2 minutes compared to 34.5 minutes in la Guardia average strip miles is 17.3 miles compared to 11.1 miles and the average customer cost is $77.90 compared to $64.58.
+Given the information that we have deducted from these two pie charts here we can clearly say that setting up our company at JFK would be more profitable than LaGuardia
+
+## Making Future Predictions Using Prophet.
+Here we did something different rather than using just the 2023 December data we also used 2022 December data and 2021 December data concatenated them and came up with a new data set to use it for this prediction model. As you can see from the gas graph of placed below the prediction model goes up until 20/25/01 and we can clearly see that there has been an increase in the daily number of trips in relation to the previous data. Using this prediction we can clearly say that if we establish our company around any time in next year of 2025 by the time we get to the end of 2025 we will definitely see a market share and also see an increase in overall trips from the starting point to the end of the year even though there is a slowdown during the new year time but we can still see that it's going to be profitable
+<p align="center">
+    <img width="1000" height="450" src="https://github.com/user-attachments/assets/8323571c-a515-40e3-9e9d-04e162b8726f" alt="Description" width="1000">
+</p>
+
+## Conclusion
+New York City is a great hub for starting any taxi business with 5 million plus rides per month which has multiple tourist locations scenic locations and also multiple events all around the year it is a prime location for anyone to start a taxi company the airport locations have the highest pickup and drop off rate of any location ID in the data set weekends and late hours of the day are usually higher traffic times at the end we think JFK airport is a better first location to start our Robo taxi business taking into account the infrastructure and the charging equipment that requires and also over the time profitability that we can attain if we do the starting point as JFK airport then expand it beyond.
+
+
+
