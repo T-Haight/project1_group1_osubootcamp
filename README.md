@@ -101,10 +101,11 @@ Lets put some numbers to the picture above to better understand what we are tryi
 
  ## Visualizing JFK and LaGuardia Airport
  </p>
-  <img width="450" height="400" src="https://github.com/user-attachments/assets/0c4cedcd-5d7e-4950-b53a-d90c3e587e51" alt="Description" width="450">
-  <img width="450" height="400" src="https://github.com/user-attachments/assets/a75cbcdb-1395-4155-886f-945ebfc83b0e" alt="Description" width="450">
+  <img  width="500" height="400" src="https://github.com/user-attachments/assets/0c4cedcd-5d7e-4950-b53a-d90c3e587e51" alt="Description" width="500">
+  <img  width="500" height="400" src="https://github.com/user-attachments/assets/a75cbcdb-1395-4155-886f-945ebfc83b0e" alt="Description" width="500">
  </p>
- Looking both Airport data side by side we can see more travellers are going outisde NYC who are pickup from JFK than compared to LaGuardia. We can clearly see that there has been a clear difference from the drop off zones depicted in these two diagrams above let's go into a couple of metrics regarding a drop off zones of JFK and drop off zones of la Guardia airport the average ride for JFK is close to 3000 per day in compared to LaGuardia is 3400 per day average trip times is 43.2 minutes compared to 34.5 minutes in la Guardia average strip miles is 17.3 miles compared to 11.1 miles and the average customer cost is $77.90 compared to $64.58.
+ 
+Looking both Airport data side by side we can see more travellers are going outisde NYC who are pickup from JFK than compared to LaGuardia. We can clearly see that there has been a clear difference from the drop off zones depicted in these two diagrams above let's go into a couple of metrics regarding a drop off zones of JFK and drop off zones of la Guardia airport the average ride for JFK is close to 3000 per day in compared to LaGuardia is 3400 per day average trip times is 43.2 minutes compared to 34.5 minutes in la Guardia average strip miles is 17.3 miles compared to 11.1 miles and the average customer cost is $77.90 compared to $64.58.
 Given the information that we have deducted from these two pie charts here we can clearly say that setting up our company at JFK would be more profitable than LaGuardia
 
 ## Making Future Predictions Using Prophet.
