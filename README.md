@@ -2,7 +2,7 @@
 ![image](https://github.com/user-attachments/assets/085a74c0-f00d-4abe-bcdb-dcdf708a12e7?w=800&h=450)
 
 ## Overview
-This project will be preforming Data Analysis and Predicting furture sales of LYFT taxi service in New York City, ultimately answering the question which part of NYC has the highest sales and trips. We will be exploring the raw data to determine which data need to be spliced, grouped. The results found will be visualized to give a better understanding.
+This project will be preforming Data Analysis and Predicting future sales of LYFT taxi service in New York City, ultimately answering the question which part of NYC has the highest sales and trips. We will be exploring the raw data to determine which data need to be spliced, grouped. The results found will be visualized to give a better understanding.
 
 ## Table of Contents
 1. [Introduction](#Introduction)
